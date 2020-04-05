@@ -16,7 +16,7 @@ let client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: t
 const users = ["Asad", 'Moin', 'Sabed', 'Susmita', 'Sohana', 'Sabana'];
 
 
-app.get('/products', (req, res) => {
+app.get('/foodItems', (req, res) => {
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("onlineFoodStore").collection("foodType");
