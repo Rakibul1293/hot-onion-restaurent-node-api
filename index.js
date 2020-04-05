@@ -52,6 +52,9 @@ app.get('/product/:key', (req, res) => {
     });
 });
 
+//delete
+//update
+// post
 app.post('/getProductsByKey', (req, res) => {
     const key = req.params.key;
     const productKeys = req.body;
@@ -72,9 +75,7 @@ app.post('/getProductsByKey', (req, res) => {
         // client.close();
     });
 });
-//delete
-//update
-// post
+
 app.post('/addProduct', (req, res) => {
     const product = req.body;
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
