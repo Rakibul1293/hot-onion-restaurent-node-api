@@ -19,7 +19,7 @@ const users = ["Asad", 'Moin', 'Sabed', 'Susmita', 'Sohana', 'Sabana'];
 app.get('/products', (req, res) => {
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
-        const collection = client.db("onlineStore").collection("products");
+        const collection = client.db("onlineFoodStore").collection("foodType");
         collection.find().limit(9).toArray((err, documents) => {
             if (err) {
                 console.log(err);
@@ -38,7 +38,7 @@ app.get('/product/:key', (req, res) => {
 
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
-        const collection = client.db("onlineStore").collection("products");
+        const collection = client.db("onlineFoodStore").collection("foodType");
         collection.find({key}).toArray((err, documents) => {
             if (err) {
                 console.log(err);
@@ -59,7 +59,7 @@ app.post('/getProductsByKey', (req, res) => {
 
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
-        const collection = client.db("onlineStore").collection("products");
+        const collection = client.db("onlineFoodStore").collection("foodType");
         collection.find({ key: { $in: productKeys } }).toArray((err, documents) => {
             if (err) {
                 console.log(err);
@@ -79,7 +79,7 @@ app.post('/addProduct', (req, res) => {
     const product = req.body;
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
-        const collection = client.db("onlineStore").collection("products");
+        const collection = client.db("onlineFoodStore").collection("foodType");
         collection.insert(product, (err, result) => {
             if (err) {
                 console.log(err);
@@ -99,7 +99,7 @@ app.post('/placeOrder', (req, res) => {
     console.log(orderDetails);
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
-        const collection = client.db("onlineStore").collection("orders");
+        const collection = client.db("onlineFoodStore").collection("orders");
         collection.insertOne(orderDetails, (err, result) => {
             if (err) {
                 console.log(err);
