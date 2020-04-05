@@ -16,7 +16,7 @@ let client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: t
 const users = ["Asad", 'Moin', 'Sabed', 'Susmita', 'Sohana', 'Sabana'];
 
 
-app.get('/foodItem', (req, res) => {
+app.get('/foodItems', (req, res) => {
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("onlineFoodStore").collection("foodType");
@@ -33,7 +33,7 @@ app.get('/foodItem', (req, res) => {
     });
 });
 
-app.get('/product/:key', (req, res) => {
+app.get('/foodItem/:key', (req, res) => {
     const key = req.params.key;
 
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -55,7 +55,7 @@ app.get('/product/:key', (req, res) => {
 //delete
 //update
 // post
-app.post('/getProductsByKey', (req, res) => {
+app.post('/getfoodItemsByKey', (req, res) => {
     const key = req.params.key;
     const productKeys = req.body;
     console.log(productKeys);
@@ -76,7 +76,7 @@ app.post('/getProductsByKey', (req, res) => {
     });
 });
 
-app.post('/addProduct', (req, res) => {
+app.post('/addfoodItems', (req, res) => {
     const product = req.body;
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
