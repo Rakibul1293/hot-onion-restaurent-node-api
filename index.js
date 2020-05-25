@@ -60,7 +60,7 @@ app.post('/getfoodItemsByKey', (req, res) => {
     const productKeys = req.body;
     console.log(productKeys);
 
-    client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    // client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("onlineFoodStore").collection("foodType");
         collection.find({ key: { $in: productKeys } }).toArray((err, documents) => {
@@ -78,7 +78,7 @@ app.post('/getfoodItemsByKey', (req, res) => {
 
 app.post('/addfoodItems', (req, res) => {
     const product = req.body;
-    client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    // client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("onlineFoodStore").collection("foodType");
         collection.insert(product, (err, result) => {
@@ -98,7 +98,7 @@ app.post('/placeOrder', (req, res) => {
     const orderDetails = req.body;
     orderDetails.orderTime = new Date();
     console.log(orderDetails);
-    client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    // client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("onlineFoodStore").collection("orders");
         collection.insertOne(orderDetails, (err, result) => {
